@@ -1,0 +1,1 @@
+alert("Hello Javascript"); //alert 는 경고 메시지 출력
