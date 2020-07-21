@@ -1,0 +1,12 @@
+h1 {
+	color: blue;
+}
+h2 {
+	color: green;
+}
+
+p {
+	marginleft: 10px;
+	font_size: 1em; /*글자 크기 지정*/
+}
+
