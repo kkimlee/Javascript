@@ -13,9 +13,13 @@
 	<body>
 		This is a HTML page
 		<p>이 글씨는 CSS에 의해 꾸며집니다.</p>
-		<h1>애국가</h1>
+		<h1>
+		<img id = "logo" src = https://programmers.co.kr/assets/bi-symbol-light-49a242793b7a8b540cfc3489b918e3bb2a6724f1641572c14c575265d7aeea38.png height = "30px">
+		애국가
+		</h1>
 		<p id = "songwriter">작곡: 안익태</p>
-		<p id = "lyricist" style = "color: red;">작사: 미상</p>
+		<p id = "lyricist" style = "color: red;", src = "test">
+		<strong>작사:</strong> <i>미상<i></p>
 		
 		<h2>1절</h2>
 		<p class = "lyric">
@@ -27,6 +31,19 @@
 				남산 위에 저 소나무, 철갑을 두른 듯 바람서리 불변함은 우리 기상일세.<br>
 				무궁화 삼천리 화려강산 대한 사람, 대한으로 길이 보전하세.
 			</p>
+			<font>
+				작성자 : <input name = "author">
+				댓글 : <input name = "msg">
+				<input type = "submit">
+			</font>
 	</body>
-	<!--<script src = "js.js"></script>-->
+	<!--
+	<script src = "js.js"></script>
+	<script src = "html_dom.js"></script>
+	<script src = "getElementById.js"></script>
+	<script src = "getElements.js"></script>
+	<script src = "querySelector.js"></script>
+	-->
+	<script src = "createElement.js"></script>
+	<script src = "removeElement.js"></script>
 </html>
