@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<meta sharset = "uft-8">
+		<style>
+			.character { color: black; }
+			.word { color: gray; }
+		</style>
+		<script>
+			var req = new XMLHttpRequest();
+			req.onreadystatechange = function a() {
+				console.log(this.readyState, this.status);
+				if (this.readyState == 4) {
+						console.log(this.response);
+						var data = JSON.parse(this.response);
+						
+						for (var i in data) {
+							var t = document.getElementById("template").cloneNode(true);
+							t.removeAttribute("id");
+							t.children[0].innerText = data[i].id;
+							t.children[1].innerText = data[i].msg;
+							document.body.appendChild(t);
+						}
+				}
+			}
+			
+			req.open("GET", "json_data.txt");
+			req.send();
+			
+			//req.open("GET", "http://google.com");
+			//req.send();
+			
+			/*
+			0: opend() 메서드가 호출되기 전
+			1: opend() 메서드가 호출된 후
+			2: 보낸 요청에 대해 응답에 헤더가 수신된 후
+			3: 응답 메시지에 body 부분이 수신 중일 떄
+			4: 모든 응답이 완료되었을 때
+			*/
+			
+			/* console에서 실행
+			req.readyState;
+			var req2 = new XMLHttpRequest();
+			req2.readyState;
+			req2.open("GET", "./data.txt");
+			req2.readyState;
+			req2.send();
+			req2.readyState;
+			*/
+		</script>
+	</head>
+	<body>
+		AJAX
+		<p id = "template">
+		<span class = "character">주인공</span> : <span class = "word">명대사</span>
+		</p>
+	</body>
+</html>
