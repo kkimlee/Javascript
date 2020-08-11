@@ -3,6 +3,10 @@ body {
 	padding: 0;
 }
 
+#btn {
+	float: left;
+}
+
 #main_menu, #sub_menu {
 	margin: 0;
 	padding: 0;

@@ -49,7 +49,6 @@
 			
 			var file_data=''
 			var category_data=''
-			var value = {{data}};
 			function getFile(value) {
 				file_data = value
 				console.log(file_data)
@@ -63,7 +62,6 @@
 			}
 			
 			function getCategory(value) {
-				console.log(value)
 				$.ajax({
 					type:'POST',
 					url: "/getData",
@@ -71,13 +69,17 @@
 						category:value
 					},
 					success:function(result){
-						var value = result
+						var category = result.category;
+						var value = result.value;
+						var index = result.index;
 						var ctx = document.getElementById('myChart').getContext('2d');
 						var myChart = new Chart(ctx, {
 							type: 'line',
 							data: {
+								labels: index,
 								datasets: [{
-									data: [0, 0, 0, 0, 0],
+									label: category,
+									data: value,
 									borderColor: [
 										'rgba(255, 99, 132, 1)'
 									],
