@@ -5,6 +5,7 @@ body {
 
 #btn {
 	float: left;
+	font-size:15px;
 }
 
 #main_menu, #sub_menu {

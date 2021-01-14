@@ -138,15 +138,29 @@ for i in range(len(normal_data_set)):
         elif j // 320 == 1:
             label.append(1)
         else:
-            label.append(2)
+            if i==2:
+                label.append(0)
+            else:
+                label.append(2)
     train_label.append(label)
 
-
+X=[]
+y=[]
 for i in range(len(train_data)):
+    '''
     train_data[i] = np.array(train_data[i])    
     train_data[i] = np.reshape(train_data[i], train_data[i].shape + (1,))
     train_label[i] = np.array(train_label[i])
     train_label[i] = np.reshape(train_label[i], train_label[i].shape + (1,))
+    '''
+    X += train_data[i]
+    y += train_label[i]
+    
+X = np.array(X)
+X = np.reshape(X, X.shape + (1,))
+y = np.array(y)
+y = np.reshape(y, y.shape + (1,))
+
 
     
 
@@ -162,7 +176,10 @@ for i in range(len(normal_data_set)):
         elif j // 80 == 1:
             label.append(1)
         else:
-            label.append(2)
+            if i==2:
+                label.append(0)
+            else:
+                label.append(2)
     test_label.append(label)
 
 for i in range(len(test_data)):
@@ -171,7 +188,8 @@ for i in range(len(test_data)):
     test_label[i] = np.array(test_label[i])
     test_label[i] = np.reshape(test_label[i], test_label[i].shape + (1,))
 
-data_input_shape = train_data[0][0].shape
+# data_input_shape = train_data[0][0].shape
+data_input_shape = X[0].shape
 
 data_input = Input(shape=data_input_shape)
 data_stack = Conv2D(filters=4, kernel_size=(128, 2), name="convolution0", padding='valid', activation='relu')(data_input)
@@ -203,7 +221,8 @@ for i in range(len(test_data)):
     model.compile(optimizer=adam, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     model.summary()
     
-    history = model.fit(x=train_data[i], y=train_label[i], batch_size=64, epochs=500, validation_data=(test_data[i], test_label[i]))
+    # history = model.fit(x=train_data[i], y=train_label[i], batch_size=64, epochs=500, validation_data=(test_data[i], test_label[i]))
+    history = model.fit(x=X, y=y, batch_size=64, epochs=500, validation_data=(test_data[i], test_label[i]))
     model.save('model_' + data_columns[i])
     pred.append(model.predict(test_data[i]))
     test_loss, test_acc = model.evaluate(test_data[i], test_label[i], verbose=2)
